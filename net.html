@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body,
+    .container {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial;
+      font-size: 17px;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+    }
+
+    #audioButton {
+      font-size: 18px;
+      padding: 10px;
+      border: none;
+      background: #000;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    #audioButton:hover {
+      background: #ddd;
+      color: black;
+      opacity: 100%;
+    }
+
+    .muted {
+      opacity: 50%;
+    }
+
+    .unmuted {
+      opacity: 10%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <video autoplay muted loop id="video">
+    <source src="net.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <div class="container">
+    <span id="audioButton" class="material-icons muted" onclick="myFunction()">
+      volume_off
+    </span>
+  </div>
+
+  <script>
+    var video = document.getElementById("video");
+    var audioButton = document.getElementById("audioButton");
+
+    function myFunction() {
+      audioButton.classList.toggle("muted");
+      audioButton.classList.toggle("unmuted");
+      if (video.muted) {
+        video.muted = false;
+        audioButton.innerHTML = "volume_up";
+      } else {
+        video.muted = true;
+        audioButton.innerHTML = "volume_off";
+      }
+    }
+  </script>
+
+</body>
+
+</html>
